@@ -1,0 +1,23 @@
+body {
+  background-color: rgba(200, 255, 0, 0.5);
+}
+body::-webkit-scrollbar {
+  /* background: red; */
+  border-radius: 15px;
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 15px;
+}
+::-webkit-scrollbar-thumb {
+  background: #f57b4b;
+  border-radius: 10px;
+}
+@media screen and (max-width: 550px) {
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  
+}

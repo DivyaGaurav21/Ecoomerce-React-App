@@ -1,7 +1,17 @@
 import React from 'react'
-import './App.css';
-import Coin from './features/coin/Coin';
-import Counter from './features/counter/Counter';
+import Header from './components/Header';
+import './App.css'
+//---------Importing BootStrap Css Module-------------//
+import 'bootstrap/dist/css/bootstrap.min.css';
+// ---------Importing Carausel Image-----------------//
+import MealDemo from './components/Carausal';
+// ---------Importing routes , route ----------------//
+import { Routes, Route } from 'react-router-dom'
+// ----------import CardsDetails , Card--------------//
+import CardsDetails from './components/CardsDetails';
+import Cards from './components/Cards'
+
+
 
 
 function App() {
@@ -9,9 +19,12 @@ function App() {
 
   return (
       <div className="App">
-          <h1>REDUX</h1>
-          <Counter />
-          <Coin/>
+          <Header />
+          <MealDemo />
+          <Routes>
+              <Route path='/' element={ <Cards/> } />
+              <Route path='/cart' element={ <CardsDetails/> } />
+          </Routes>
     </div>
   );
 }
