@@ -1,6 +1,4 @@
-body {
-  background-color: rgba(200, 255, 0, 0.5);
-}
+
 body::-webkit-scrollbar {
   /* background: red; */
   border-radius: 15px;

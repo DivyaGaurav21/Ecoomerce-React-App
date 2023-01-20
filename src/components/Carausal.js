@@ -35,7 +35,7 @@ function MealDemo() {
                 />
 
                 <Carousel.Caption>
-                    <p style ={{color: "red"}}>
+                    <p style ={{color: "white"}}>
                     A delicious Burger Delviery top rated by customer
                     </p>
                 </Carousel.Caption>

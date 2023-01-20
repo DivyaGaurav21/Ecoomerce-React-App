@@ -10,6 +10,7 @@ import { Routes, Route } from 'react-router-dom'
 // ----------import CardsDetails , Card--------------//
 import CardsDetails from './components/CardsDetails';
 import Cards from './components/Cards'
+import Footer from './components/footer/Footer';
 
 
 
@@ -25,6 +26,7 @@ function App() {
               <Route path='/' element={ <Cards/> } />
               <Route path='/cart' element={ <CardsDetails/> } />
           </Routes>
+          <Footer/>
     </div>
   );
 }

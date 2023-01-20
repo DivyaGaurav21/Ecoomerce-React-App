@@ -15,11 +15,11 @@ const Header = () => {
     const [modalShow, setModalShow] = useState(false);
   return (
       <>
-          <Navbar bg="danger" variant="dark">
+          <Navbar style={{background : '#f44336'}} variant="dark">
               <Container>
-                  <Nav.Link to='/' className='text-light mx-4'>Meal Hub</Nav.Link>
+                  <Nav.Link to='/' className='text-light mx-4 fw-bold fs-3 fst-italic'>Meal Hub</Nav.Link>
                   <Nav className="me-auto">
-                      <Nav.Link href="#home" className='text-light'>Home</Nav.Link>
+                      <Nav.Link href="#home" className='text-light fw-bolder'>Home</Nav.Link>
                   </Nav>
                   <Badge badgeContent={4} color="primary">
                       <i class="fa-solid fa-cart-shopping text-light" style={{ fontSize: 25, cursor: "pointer" }} onClick={() => setModalShow(true)}></i>

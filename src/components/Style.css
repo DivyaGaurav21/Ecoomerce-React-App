@@ -1,6 +1,8 @@
 .card_style{
     cursor: pointer;
     transition: .3s;
+    background-color: rgba(255, 7, 7, 0.295);
+    /* box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.082); */
 }
   
   .smalltrash{
@@ -9,7 +11,8 @@
   
   
   .card_style:hover{
-      box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.082);
+    background-color:rgb(187, 242, 255);
+     box-shadow: 2px 2px 5px 2px rgba(75, 73, 73, 0.082);
   }
   
   .iteamsdetails{
@@ -42,6 +45,10 @@
           align-items: center;
           justify-content: center;
       }
+  }
+
+  .btn{
+    background-color: #f44336;
   }
   
   @media (max-width:450px){
