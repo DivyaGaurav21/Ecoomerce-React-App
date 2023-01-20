@@ -1,7 +1,7 @@
 import Carousel from 'react-bootstrap/Carousel';
-import IMG1 from '../assets/meals.jpg'
-import IMG2 from '../assets/meals2.jpg'
-import IMG3 from '../assets/meals3.jpg'
+import IMG1 from '../../assets/meals.jpg'
+import IMG2 from '../../assets/meals2.jpg'
+import IMG3 from '../../assets/meals3.jpg'
 
 function MealDemo() {
     return (
@@ -13,7 +13,7 @@ function MealDemo() {
                     alt="First slide"
                 />
                 <Carousel.Caption>
-                    <p style={{ color: "white" }}>Delicious Receipy are definatly founded here</p>
+                    <p style={{ color: "white" }}>Delicious Receipy</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -24,7 +24,7 @@ function MealDemo() {
                 />
 
                 <Carousel.Caption>
-                    <p style ={{color: "white" } }>Best review by client almost whole item</p>
+                    <p style ={{color: "white" } }>Best review by client</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>

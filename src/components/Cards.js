@@ -6,10 +6,15 @@ import "./Style.css";
 import DeleteIcon from '@mui/icons-material/Delete';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
 import Ratings from './Ratings';
-// import { useDispatch } from 'react-redux';
-// import { ADD } from '../redux/actions/action';
+
+import { useDispatch } from 'react-redux';
+
+
+import { addCart } from '../store/cartSlice';
 
 const Cards = () => {
+
+    const dispatch = useDispatch();
 
     const [data, setData] = useState(Cardsdata);
     // console.log(data);
@@ -17,11 +22,13 @@ const Cards = () => {
 
     // const dispatch = useDispatch();
 
+// --------Function for Add to Cart-------------------//
+    const addCartHandle = (element) => {
+        // ======Add this element in redux store======//
+        dispatch(addCart(element));
 
-    // const send = (e) => {
-    //     // console.log(e);
-    //     dispatch(ADD(e));
-    // }
+    }
+    
 
     return (
         <div className='container mt-2'>
@@ -46,6 +53,7 @@ const Cards = () => {
                                         <div class="row">
                                             <div class="col-8">
                                                 <Button variant="danger"
+                                                    onClick={()=> addCartHandle(element)}
                                                     className='col-lg-12 btn'>Add to Cart</Button>
                                             </div>
                                             <div class="col-4 d-flex justify-content-between align-items-center">

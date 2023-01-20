@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 
-// import { store } from './app/store'
-// import { Provider } from 'react-redux'
+// =============Import Store===============//
+import store from './store/store';
+import { Provider } from 'react-redux'
 
 //---------------Importing Browse Router Dom -------------------//
 import { BrowserRouter } from 'react-router-dom';
@@ -13,9 +14,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
       <React.StrictMode>
-         {/* <Provider store={store}> */}
+         <Provider store={store}>
              <App />
-         {/* </Provider> */}
+         </Provider>
         </React.StrictMode>
     </BrowserRouter>
 );

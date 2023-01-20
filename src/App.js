@@ -4,7 +4,7 @@ import './App.css'
 //---------Importing BootStrap Css Module-------------//
 import 'bootstrap/dist/css/bootstrap.min.css';
 // ---------Importing Carausel Image-----------------//
-import MealDemo from './components/Carausal';
+import MealDemo from './components/carousel/Carausal';
 // ---------Importing routes , route ----------------//
 import { Routes, Route } from 'react-router-dom'
 // ----------import CardsDetails , Card--------------//
@@ -20,6 +20,7 @@ function App() {
 
   return (
       <div className="App">
+          <provider></provider>
           <Header />
           <MealDemo />
           <Routes>
