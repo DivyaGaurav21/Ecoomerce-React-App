@@ -5,7 +5,7 @@ import Cardsdata from '../CardsData'
 import "./Style.css";
 import DeleteIcon from '@mui/icons-material/Delete';
 import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
-import Ratings from './Rating';
+import Ratings from './Ratings';
 // import { useDispatch } from 'react-redux';
 // import { ADD } from '../redux/actions/action';
 
