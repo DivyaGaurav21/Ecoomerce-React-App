@@ -10,13 +10,13 @@
   }
   
   .card_style:hover{
-    background-color:rgb(200, 245, 255);
+    background-color:rgb(231, 83, 90);
      box-shadow: 2px 2px 5px 2px rgba(75, 73, 73, 0.082);
   }
   
   .itemsdetails{
       max-width: 800px;
-      background-color: rgba(238, 105, 198, 0.514);
+      background-color: rgba(151, 3, 3, 0.788);
       margin: auto;
       display: flex;
       justify-content: space-between;
@@ -29,6 +29,7 @@
   }
   .items__img img{
       width: 20rem;
+      max-height: 15rem;
       border-radius: 5px;
   }
   

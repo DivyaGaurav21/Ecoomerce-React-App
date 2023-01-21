@@ -9,12 +9,16 @@ import Badge from '@mui/material/Badge';
 //-----------Import Model------------------------------//
 import MyVerticallyCenteredModal from './Modals';
 
-// -------get cart item from store---------------------//
-
+// // -------get cart item from store---------------------//
+import { useSelector } from 'react-redux';
 
 
 
 const Header = () => {
+
+    // -------now subscribe the data(added to cart data) --------------//
+    const items = useSelector((state) => state.cart.cartItems);
+    console.log(items)
     const [modalShow, setModalShow] = useState(false);
   return (
       <>
@@ -24,7 +28,7 @@ const Header = () => {
                   <Nav className="me-auto">
                       <Nav.Link href="/" className='text-light fw-bolder'>Home</Nav.Link>
                   </Nav>
-                  <Badge badgeContent={4} color="primary">
+                  <Badge badgeContent={items.length} color="primary">
                       <i class="fa-solid fa-cart-shopping text-light" style={{ fontSize: 25, cursor: "pointer" }} onClick={() => setModalShow(true)}></i>
                       <MyVerticallyCenteredModal
                           show={modalShow}

@@ -20,7 +20,6 @@ function App() {
 
   return (
       <div className="App">
-          <provider></provider>
           <Header />
           <MealDemo />
           <Routes>
