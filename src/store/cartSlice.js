@@ -19,10 +19,11 @@ const cartSlice = createSlice({
         addCart: (state, action) => {
             const itemIndex = state.cartItems.findIndex(item => item.id === action.payload.id);
             if (itemIndex >= 0) {
-                state.cartItems[itemIndex] = {
-                    ...state.cartItems[itemIndex],
-                    qnty: state.cartItems[itemIndex].qnty + 1
-                }
+                state.cartItems[itemIndex].qnty += 1;
+                // state.cartItems[itemIndex] = {
+                //     ...state.cartItems[itemIndex],
+                //     qnty: state.cartItems[itemIndex].qnty + 1
+                // }
                 toast.info("Item increase in cart!", {
                     position: "top-right"
                 })
@@ -67,6 +68,9 @@ const cartSlice = createSlice({
                 });
             }
         },
+        clearCart : (state, action) => {
+            state.cartItems = [];
+        },
        
 
 
@@ -75,6 +79,6 @@ const cartSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addCart, removeFromCart, decreaseCart } = cartSlice.actions;
+export const { addCart, removeFromCart, decreaseCart , clearCart} = cartSlice.actions;
 
 export default cartSlice.reducer;

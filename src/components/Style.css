@@ -52,6 +52,12 @@
   .btn{
     background-color: #f44336;
   }
+  .modal-btn:hover{
+    background-color:#fff;
+    color: #f44336;
+    border: 1px solid #f44336;
+
+  }
   
   @media screen and (max-width:450px){
       .smalltrash{

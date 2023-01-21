@@ -17,7 +17,7 @@ import { useDispatch } from 'react-redux';
 // ----------Import remove Item Reducer Func-------------//
 // -----------Import decreaseItem Reducer Func-------------//
 // -----------Import addCart Reducer Func-------------//
-import { removeFromCart, decreaseCart, addCart } from '../store/cartSlice';
+import { removeFromCart, decreaseCart, addCart , clearCart} from '../store/cartSlice';
 
 
 
@@ -41,6 +41,10 @@ function MyVerticallyCenteredModal(props) {
     // -----------Function for increase Cart Item-------------//
     const increaseCartItemHandle= (element) => {
         dispatch(addCart(element))
+    }
+    // -----------Function for clear all Cart Item-------------//
+    const clearCartItemHandle= () => {
+        dispatch(clearCart())
     }
 
     return (
@@ -97,9 +101,10 @@ function MyVerticallyCenteredModal(props) {
                      })
                  }
             </Modal.Body>
-            <Modal.Footer>
-                <h1>Total Amount : ₹ { cart.cartTotalAmount }</h1>
-                <Button onClick={props.onHide}>Close</Button>
+            <Modal.Footer className='d-flex justify-content-between'>
+                <Button className="btn modal-btn" onClick={() => clearCartItemHandle()}>Clear Cart</Button>
+                <div style={{color:'red' , fontSize:23}}><strong>Total Amount</strong> : ₹ {cart.cartTotalAmount}</div>
+                <Button onClick={props.onHide} className="btn modal-btn">Close</Button>
             </Modal.Footer>
         </Modal>
     );
