@@ -18,7 +18,7 @@ const Header = () => {
 
     // -------now subscribe the data(added to cart data) --------------//
     const items = useSelector((state) => state.cart.cartItems);
-    console.log(items)
+
     const [modalShow, setModalShow] = useState(false);
   return (
       <>

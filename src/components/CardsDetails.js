@@ -10,7 +10,6 @@ import Ratings from './Ratings'
 const CardsDetails = (props) => {
     // -------now subscribe the data(added to cart data) --------------//
     // const items = useSelector((state) => state.cart)
-console.log('in card detail' , props.id)
 
   return (
       <div className='container mt-3 '>

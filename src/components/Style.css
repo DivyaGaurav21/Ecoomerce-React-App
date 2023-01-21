@@ -10,7 +10,7 @@
   }
   
   .card_style:hover{
-    background-color:rgb(231, 83, 90);
+    background-color:rgba(138, 252, 246, 0.616);
      box-shadow: 2px 2px 5px 2px rgba(75, 73, 73, 0.082);
   }
   

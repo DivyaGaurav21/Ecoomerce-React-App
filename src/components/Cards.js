@@ -10,6 +10,7 @@ import Ratings from './Ratings';
 import { useDispatch } from 'react-redux';
 
 
+
 import { addCart } from '../store/cartSlice';
 
 const Cards = () => {
@@ -28,6 +29,8 @@ const Cards = () => {
         dispatch(addCart(element));
 
     }
+
+
     
 
     return (
@@ -57,7 +60,7 @@ const Cards = () => {
                                                     className='col-lg-12 btn'>Add to Cart</Button>
                                             </div>
                                             <div class="col-4 d-flex justify-content-between align-items-center">
-                                                <DeleteIcon/>
+                                                <DeleteIcon />
                                                 <ModeEditTwoToneIcon/>
                                             </div>
                                         </div>

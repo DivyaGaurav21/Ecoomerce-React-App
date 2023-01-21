@@ -1,6 +1,11 @@
 import React from 'react'
 import Header from './components/Header';
 import './App.css'
+
+// ---------Importing react Tostifier--------------------//
+import {ToastContainer} from "react-toastify"
+// ---------Import Toast Container css ------------------//
+import "react-toastify/dist/ReactToastify.css";
 //---------Importing BootStrap Css Module-------------//
 import 'bootstrap/dist/css/bootstrap.min.css';
 // ---------Importing Carausel Image-----------------//
@@ -20,6 +25,7 @@ function App() {
 
   return (
       <div className="App">
+          <ToastContainer/>
           <Header />
           <MealDemo />
           <Routes>
