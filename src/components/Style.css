@@ -58,6 +58,12 @@
     border: 1px solid #f44336;
 
   }
+  .lnk:hover{
+   border-radius: 20px;
+    border-bottom: 1px solid #fff;
+  }
+
+
   
   @media screen and (max-width:450px){
       .smalltrash{

@@ -1,0 +1,32 @@
+.addproduct-form{
+   width: 50%;
+   display: flex;
+   flex-direction: column;
+   gap:1.2rem;
+   margin-bottom: -23px;
+   padding: 10px 20px;
+   border-radius:20px;
+   border-left:1px solid #f44336 ;
+   border-right:1px solid #f44336 ;
+}
+.addproduct-form input{
+    padding: 7px 20px;
+    outline: none;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid red;
+    border-radius: 20px;
+    color: #f44336;
+}
+
+
+.addproduct-form button{
+    width: 40%;
+    color: #fff;
+    margin: auto;
+}
+@media screen and (max-width:600px) {
+    .addproduct-form{
+        width: 96%;
+    }
+}

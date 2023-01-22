@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-
+import { useEffect } from 'react';
 
 //----------importing Bootstrap Table Component-----------//
 import Table from 'react-bootstrap/Table'
@@ -17,7 +17,7 @@ import { useDispatch } from 'react-redux';
 // ----------Import remove Item Reducer Func-------------//
 // -----------Import decreaseItem Reducer Func-------------//
 // -----------Import addCart Reducer Func-------------//
-import { removeFromCart, decreaseCart, addCart , clearCart} from '../store/cartSlice';
+import { removeFromCart, decreaseCart, addCart, clearCart, getTotals } from '../store/cartSlice';
 
 
 
@@ -29,6 +29,11 @@ function MyVerticallyCenteredModal(props) {
     const cart = useSelector((state) => state.cart);
     // -----------dispatch function --------------//
     const dispatch = useDispatch();
+
+    // -----useEffect runs the function once when dependency changes --------//
+    useEffect(() => {
+        dispatch(getTotals())
+     }, [cart])
 
     // ----------Function for deleteItem from Cart-----------//
     const removeCartHandler = (element) => {

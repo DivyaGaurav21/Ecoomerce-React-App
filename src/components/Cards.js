@@ -43,14 +43,14 @@ const Cards = () => {
                                 <Card key={ id } style={{ width: '22rem', border: "none" }} className="mx-2 mt-4 card_style">
                                     <Card.Img variant="top" src={element.imgdata} style={{ height: "16rem" }} className="mt-3" />
                                     <Card.Body>
-                                        <Card.Title>{element.rname}</Card.Title>
+                                        <Card.Title>{element.rname}  <small style={{ fontSize: 15, color:"grey"}}>{element.name}</small></Card.Title>
                                         <Card.Text>
                                             <div className="price-rating d-flex justify-content-between">
                                                 Price : ₹ {element.price}
                                                 <Ratings value={element.rating} />
                                             </div>
                                             <div>
-                                                <small>Overview : {element.somedata }</small>
+                                               ☞ <small>{element.somedata }</small>
                                             </div>
                                         </Card.Text>
                                         <div class="row">

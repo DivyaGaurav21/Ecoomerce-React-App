@@ -30,7 +30,7 @@ const cartSlice = createSlice({
             } else {
                 const tempProduct = { ...action.payload, qnty: 1 }
                 state.cartItems.push(tempProduct)
-                toast.success(`Successfully Added ${action.payload.rname} receipy in Cart!`, {
+                toast.success(`Successfully Added ${action.payload.name} in Cart!`, {
                     position: "bottom-right"
                 })
             }
@@ -68,6 +68,17 @@ const cartSlice = createSlice({
                 });
             }
         },
+        //================reducer Fn for items Total price=============//
+        getTotals:(state, action) => {
+            let  total = state.cartItems.reduce((cartTotal, cartItem) => {
+                    const { price, qnty } = cartItem;
+                    const itemTotal = price * qnty;
+                    cartTotal += itemTotal;
+                    return cartTotal;
+                }, 0 );
+            state.cartTotalAmount = total;
+        },
+        //================reducer Fn for clear whole cart=============//
         clearCart : (state, action) => {
             state.cartItems = [];
         },
@@ -79,6 +90,6 @@ const cartSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addCart, removeFromCart, decreaseCart , clearCart} = cartSlice.actions;
+export const { addCart, removeFromCart, decreaseCart , getTotals , clearCart} = cartSlice.actions;
 
 export default cartSlice.reducer;
