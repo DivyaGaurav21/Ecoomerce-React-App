@@ -10,6 +10,8 @@ import { Provider } from 'react-redux'
 //---------------Importing Browse Router Dom -------------------//
 import { BrowserRouter } from 'react-router-dom';
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>

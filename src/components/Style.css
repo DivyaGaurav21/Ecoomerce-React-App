@@ -63,6 +63,14 @@
     border-bottom: 1px solid #fff;
   }
 
+.fa-cart-shopping{
+    padding-bottom: 8px;
+    border-radius: 10px;
+}
+.fa-cart-shopping:hover{
+    border-bottom: 1px solid #fff;
+}
+
 
   
   @media screen and (max-width:450px){

@@ -3,19 +3,21 @@ import './AddProduct.css'
 
 // import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
 
-// import { addCart } from '../../store/cartSlice';
 
-import Cardsdata from '../../CardsData';
+import { useDispatch } from 'react-redux';
+
+
+
+
+
+
 
 const AddProduct = () => {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // const items = useSelector((state) => state.cart.cartItems);
-    // console.log(items);
 
     const [itemName, setItemName] = useState('');
     const [restore, setRestoreName] = useState('');
@@ -40,7 +42,7 @@ const AddProduct = () => {
             qnty:0   
         }
        
-        Cardsdata.push(formData)
+        dispatch(addNewItem(formData))
         navigate("/")
     }
 

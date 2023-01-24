@@ -28,7 +28,7 @@ const Header = () => {
                   <Nav className="me-auto">
                       <Nav.Link href="/" className='text-light fw-bolder lnk'>Home</Nav.Link>
                       &nbsp; &nbsp; &nbsp;
-                      <Nav.Link href ='/addproducts' className='text-light fw-bolder lnk'>Add Recipes</Nav.Link>
+                      <Nav.Link href='/addproducts' className='text-light fw-bolder lnk'>Add Recipes</Nav.Link>
                   </Nav>
                   <Badge badgeContent={items.length} color="primary">
                       <i class="fa-solid fa-cart-shopping text-light" style={{ fontSize: 25, cursor: "pointer" }} onClick={() => setModalShow(true)}></i>

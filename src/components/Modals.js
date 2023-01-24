@@ -62,7 +62,9 @@ function MyVerticallyCenteredModal(props) {
             <Modal.Header closeButton className='bg-danger text-light'>
                 <Modal.Title id="contained-modal-title-vcenter" className='ms-auto'>
                   <span>Number of Items : </span>
-                     {cart.cartItems.length}
+                    {
+                        cart.cartItems.length ? cart.cartItems.length : " No Item in Cart"
+                     }
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -83,7 +85,6 @@ function MyVerticallyCenteredModal(props) {
                                                      <td style={{ color: "#fff" }}>
                                                          <p> <strong>Restaurant</strong>  : {element.rname} </p>
                                                          <p> <strong>Price</strong>  : ₹ {element.price}</p>
-                                                        
                                                         <p> <strong>Total</strong>  :₹  {element.price * element.qnty} </p>
                                                         <div className='mt-2 d-flex justify-content-between align-items-center' style={{ width: 90, height:30, borderRadius: 40, cursor: "pointer", background: "#ddd", color: "#111" }}>
                                                              <span style={{ fontSize: 24 }} onClick = {() => decreaseCartItemHandle(element)}>−</span>             
@@ -92,7 +93,8 @@ function MyVerticallyCenteredModal(props) {
                                                          </div>
                                                      </td>
                                                      <td style={{ color: "#fff" }}>
-                                                         <p><strong>Rating :</strong> <Ratings value="3" /></p>
+                                                        <p><strong>Rating :</strong> <Ratings value="3" /></p>
+                                                        <small style={{color:"grey"}}>{ element.name}</small>
                                                          <p> <strong>Dishes</strong>  : {element.address}</p>
                                                         <p onClick={() => removeCartHandler(element)}><strong>Remove :</strong> <span ><i className='fas fa-trash' style={{ color: "red", fontSize: 20, cursor: "pointer" }}></i>	</span></p>
                                                      </td>
@@ -108,7 +110,7 @@ function MyVerticallyCenteredModal(props) {
             </Modal.Body>
             <Modal.Footer className='d-flex justify-content-between'>
                 <Button className="btn modal-btn" onClick={() => clearCartItemHandle()}>Clear Cart</Button>
-                <div style={{color:'red' , fontSize:23}}><strong>Total Amount</strong> : ₹ {cart.cartTotalAmount}</div>
+                <div style={{color:'red' , fontSize:20}}><strong>Total payable Amount</strong> : ₹ {cart.cartTotalAmount}</div>
                 <Button onClick={props.onHide} className="btn modal-btn">Close</Button>
             </Modal.Footer>
         </Modal>

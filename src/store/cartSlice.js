@@ -20,10 +20,6 @@ const cartSlice = createSlice({
             const itemIndex = state.cartItems.findIndex(item => item.id === action.payload.id);
             if (itemIndex >= 0) {
                 state.cartItems[itemIndex].qnty += 1;
-                // state.cartItems[itemIndex] = {
-                //     ...state.cartItems[itemIndex],
-                //     qnty: state.cartItems[itemIndex].qnty + 1
-                // }
                 toast.info("Item increase in cart!", {
                     position: "top-right"
                 })
@@ -81,6 +77,9 @@ const cartSlice = createSlice({
         //================reducer Fn for clear whole cart=============//
         clearCart : (state, action) => {
             state.cartItems = [];
+            toast.error("Your Cart is Clear now !", {
+                position: "bottom-left",
+            });
         },
        
 

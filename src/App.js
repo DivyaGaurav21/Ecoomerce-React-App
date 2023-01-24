@@ -1,4 +1,3 @@
-import React from 'react'
 import Header from './components/Header';
 import './App.css'
 
@@ -18,25 +17,36 @@ import Cards from './components/Cards'
 import Footer from './components/footer/Footer';
 import AddProduct from './components/addProduct/AddProduct';
 
+// -----------Imprting useSelector & dispatch fn from react-redux---------//
+// import { useSelector, useDispatch } from 'react-redux';
+// import { addProduct } from './store/productSlice';
+
+
+
+// my api---https://my-json-server.typicode.com/DivyaGaurav21/restaurentJSON/db
+
+
 
 
 
 function App() {
-   
+
+
+
 
   return (
-      <div className="App">
-          <ToastContainer/>
-          <Header />
-          <MealDemo />
-          <Routes>
-              <Route path='/' element={<Cards />} />
-              <Route path='/cart' element={<CardsDetails />} />
-              <Route path="/addproducts" element={<AddProduct />} />
-          </Routes>
-          <Footer/>
-    </div>
-  );
+          < div className = "App" >
+                  <ToastContainer />
+                  <Header />
+                  <MealDemo />
+                  <Routes>
+                      <Route path='/' element={<Cards />} />
+                      <Route path='/cart' element={<CardsDetails />} />
+                      <Route path="/addproducts" element={<AddProduct />} />
+                  </Routes>
+                  <Footer />
+              </div >
+   );
 }
 
 export default App;
