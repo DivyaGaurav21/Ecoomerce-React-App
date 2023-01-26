@@ -1,15 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import cartReducer from './cartSlice'
-import productReducer, {productsFetch} from './productSlice'
+import productsReducer from './productSlice'
+// import { getProducts } from './productSlice'
+
+
 
 
 export const store = configureStore({
     reducer: {
-        cart: cartReducer,
-        products: productReducer
+        products: productsReducer,
+        cart: cartReducer
     },
 })
-
-store.dispatch(productsFetch());
 
 export default store;

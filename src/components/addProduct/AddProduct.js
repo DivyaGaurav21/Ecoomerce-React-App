@@ -1,17 +1,11 @@
 import React , {useState} from 'react'
 import './AddProduct.css'
 
-// import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 
-import { useDispatch } from 'react-redux';
-
-
-
-
-
-
+import { addCardDataSuccess } from '../../store/productSlice';
 
 const AddProduct = () => {
 
@@ -41,8 +35,8 @@ const AddProduct = () => {
             overview: "Menu is extensive and seasonal to a particularly high standard. Definitely fine dining. It can be expensive but worth it and they do different deals on different nights so it’s worth checking them out before you book. Highly recommended.",
             qnty:0   
         }
-       
-        dispatch(addNewItem(formData))
+        dispatch(addCardDataSuccess(formData))
+        console.log(formData)
         navigate("/")
     }
 

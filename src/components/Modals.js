@@ -33,7 +33,7 @@ function MyVerticallyCenteredModal(props) {
     // -----useEffect runs the function once when dependency changes --------//
     useEffect(() => {
         dispatch(getTotals())
-     }, [cart])
+     }, [cart , dispatch])
 
     // ----------Function for deleteItem from Cart-----------//
     const removeCartHandler = (element) => {
