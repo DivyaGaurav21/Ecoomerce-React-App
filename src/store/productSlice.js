@@ -91,6 +91,9 @@ const productsSlice = createSlice({
             state.loading = false;
             // state.edit = true;
             state.error = null;
+            toast.info("Updated SuccessFully !!", {
+                position: "top-right"
+            })
         },
         updateCardDataFailed: (state, action) => {
             state.loading = false;
@@ -107,14 +110,19 @@ const productsSlice = createSlice({
         deleteCardDataFailed: (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        },
+        sortOblect: (state, action) => {
+            let sortedData = state.data.sort((a, b) => a.price - b.price);
+            state.data = sortedData;
         }
+      
     }
 })
 
 export const { setLoading, fetchCardsDataSuccess, fetchCardsDataFailed,
     addCardDataSuccess, addCardDataFailed,
     updateCardDataSuccess, updateCardDataFailed,
-    deleteCardDataSuccess, deleteCardDataFailed } = productsSlice.actions;
+    deleteCardDataSuccess, deleteCardDataFailed, sortOblect} = productsSlice.actions;
 
 
 

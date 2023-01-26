@@ -41,6 +41,26 @@
       background-color: green;
   }
   
+  .sortitemsbtn{
+    width: 150px;
+    padding: 2px 15px;
+    background-color: rgb(240, 87, 87);
+    color: #fff;
+    border-radius: 30px;
+    margin-top: 15px;
+    border: 2px solid rgb(104, 10, 10);
+    cursor: pointer;
+  }
+  #cross{
+    background-color: rgb(112, 6, 6);
+    padding: 0px 5px;
+    border-radius: 40%;
+  }
+  .sortSpan{
+      display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   @media screen and (max-width:772px){
       .itemsdetails{
           flex-direction: column;

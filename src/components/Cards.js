@@ -21,6 +21,7 @@ import { deleteCardData } from '../store/productSlice';
 
 
 import { addCart } from '../store/cartSlice';
+import SortByPrice from './SortByPrice';
 
 const Cards = () => {
 
@@ -54,6 +55,7 @@ const Cards = () => {
         
         !loading ? (
             <div className='container mt-2'>
+                <div><SortByPrice/></div>
                 <div className="row d-flex justify-content-center align-items-center">
                     {
                         data.length > 0 && data.map((element, id) => {
