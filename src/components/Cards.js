@@ -3,9 +3,9 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import "./Style.css";
 import DeleteIcon from '@mui/icons-material/Delete';
-import ModeEditTwoToneIcon from '@mui/icons-material/ModeEditTwoTone';
+
 import Ratings from './Ratings';
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 // ---------spinner loading-------------//
 import LoadSpinner from './footer/Spinner';
@@ -20,14 +20,17 @@ import { deleteCardData } from '../store/productSlice';
 
 
 
+
 import { addCart } from '../store/cartSlice';
 import SortByPrice from './SortByPrice';
+import { productView } from '../store/productSlice'; 
+import UpdateItemModal from './UpdateItemModal';
 
 const Cards = () => {
 
   
     const dispatch = useDispatch();
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const cardsData = useSelector(state => state.products.data);
     const loading = useSelector(state => state.products.loading);
@@ -41,15 +44,16 @@ const Cards = () => {
 
 
 
-        // const cardsDetailsView = (element) => {
-        //     navigate(`/productdetails/${element.id}`)
-        // }
+    const cardDetailView = (element) => {
+        dispatch(productView(element))
+            navigate(`/productdetail`)
+        }
      
     const deleteItemHandler = (element) => {
         dispatch(deleteCardData(element.id))
     // console.log(element)
     }
-    
+
 
     return (
         
@@ -62,7 +66,7 @@ const Cards = () => {
                             return (
                             
                                 <Card key={element.id} style={{ width: '22rem', border: "none" }} className="mx-2 mt-4 card_style">
-                                    <Card.Img variant="top" src={element.imgdata} style={{ height: "16rem" }} className="mt-3" />
+                                    <Card.Img variant="top" src={element.imgdata} style={{ height: "16rem" }} className="mt-3" onClick={() => cardDetailView(element)} />
                                     <Card.Body>
                                         <Card.Title>{element.rname}  <small style={{ fontSize: 15, color: "grey" }}>{element.name}</small></Card.Title>
                                         <Card.Text>
@@ -81,8 +85,9 @@ const Cards = () => {
                                                     className='col-lg-12 btn'>Add to Cart</Button>
                                             </div>
                                             <div className="col-4 d-flex justify-content-between align-items-center">
-                                                <DeleteIcon onClick={() => deleteItemHandler(element)} />
-                                                <ModeEditTwoToneIcon />
+                                                <DeleteIcon onClick={() => deleteItemHandler(element)} className='text-warning'/>
+                                                <UpdateItemModal
+                                                    updateitem={element} />
                                             </div>
                                         </div>
 

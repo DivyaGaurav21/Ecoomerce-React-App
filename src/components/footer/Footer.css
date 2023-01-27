@@ -54,7 +54,28 @@ footer a:hover{
     color: #fff;
 
 }
+.item__list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: -30px;
 
+}
+.similar-link img{
+   width: 100%; 
+   height:200px;
+   border-radius: 20px;
+}
+.parent-similar__div{
+   max-width: 200px;
+    max-height: 300PX;
+}
+.similar__price{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    color: rgb(148, 0, 0);
+}
 @media screen and (max-width:600px) {
     .permalinks{
         flex-wrap: wrap;
@@ -65,3 +86,5 @@ footer a:hover{
     }
     
 }
+
+

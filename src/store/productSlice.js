@@ -4,10 +4,14 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const initial_State = {
-    data: [],
+    data: localStorage.getItem("productItems")
+        ? JSON.parse(localStorage.getItem("productItems"))
+        : [],
+    itemToDisplay: localStorage.getItem("productView")
+        ? JSON.parse(localStorage.getItem("productView"))
+        : "",
     loading: false,
-    error: null,
-    edit:false
+    error: null
 };
 
 export const fetchCardsData = () => async (dispatch) => {
@@ -65,18 +69,20 @@ const productsSlice = createSlice({
         },
         fetchCardsDataSuccess: (state, action) => {
             state.data = action.payload;
-            console.log(action.payload)
+            // console.log(action.payload)
             state.loading = false;
             state.error = null;
+            localStorage.setItem("productItems", JSON.stringify(state.data));
         },
         fetchCardsDataFailed: (state, action) => {
             state.loading = false;
             state.error = action.payload;
         },
         addCardDataSuccess: (state, action) => {
-            state.data.unshift(action.payload);
+            state.data.push(action.payload);
             state.loading = false;
             state.error = null;
+            localStorage.setItem("productItems", JSON.stringify(state.data));
             toast.info(`${action.payload.name} is added for Sell`, {
                 position: "top-right"
             })
@@ -89,8 +95,8 @@ const productsSlice = createSlice({
             const index = state.data.findIndex(card => card.id === action.payload.id);
             state.data[index] = action.payload;
             state.loading = false;
-            // state.edit = true;
             state.error = null;
+            localStorage.setItem("productItems", JSON.stringify(state.data));
             toast.info("Updated SuccessFully !!", {
                 position: "top-right"
             })
@@ -103,6 +109,7 @@ const productsSlice = createSlice({
             state.data = state.data.filter(card => card.id !== action.payload);
             state.loading = false;
             state.error = null;
+            localStorage.setItem("productItems", JSON.stringify(state.data));
             toast.error(`Item is Removed successfully !`, {
                 position: "top-right"
             })
@@ -114,7 +121,14 @@ const productsSlice = createSlice({
         sortOblect: (state, action) => {
             let sortedData = state.data.sort((a, b) => a.price - b.price);
             state.data = sortedData;
+            localStorage.setItem("productItems", JSON.stringify(state.data));
+        },
+        productView: (state, action) => {
+            state.itemToDisplay = action.payload;
+            // Set the JSON string in local storage
+            localStorage.setItem("productView", JSON.stringify(action.payload));
         }
+
       
     }
 })
@@ -122,7 +136,7 @@ const productsSlice = createSlice({
 export const { setLoading, fetchCardsDataSuccess, fetchCardsDataFailed,
     addCardDataSuccess, addCardDataFailed,
     updateCardDataSuccess, updateCardDataFailed,
-    deleteCardDataSuccess, deleteCardDataFailed, sortOblect} = productsSlice.actions;
+    deleteCardDataSuccess, deleteCardDataFailed, sortOblect, productView } = productsSlice.actions;
 
 
 

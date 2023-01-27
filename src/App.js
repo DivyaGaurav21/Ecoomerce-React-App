@@ -17,12 +17,21 @@ import Cards from './components/Cards'
 import Footer from './components/footer/Footer';
 import AddProduct from './components/addProduct/AddProduct';
 
+// import { useSelector } from 'react-redux';
+
 // // -----------Imprting useSelector & dispatch fn from react-redux---------//
-import {useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+
+
+// import { useParams } from 'react-router-dom';
 
 // my api---https://my-json-server.typicode.com/DivyaGaurav21/restaurentJSON/db
 
 import { fetchCardsData } from './store/productSlice';
+import CardsDetails from './components/CardsDetails';
+
+
 
 
 function App() {
@@ -32,8 +41,15 @@ function App() {
 
     useEffect(() => {
         dispatch(fetchCardsData());
-        console.log("dg")
     }, [dispatch]);
+
+
+    // const items = useSelector((state) => state.products.itemToDisplay)
+    // console.log(items.rname)
+    // let { id } = useParams();
+    // console.log(id)
+    // let requiredData = items.find(item => item.id === id);
+    // console.log(requiredData)
 
   
 
@@ -49,9 +65,9 @@ function App() {
                   <MealDemo />
                   <Routes>
                       <Route path='/' element={<Cards />} />
-              {/* <Route path='/cart' element={<CardsDetails />} /> */}
-                  <Route path='/addproducts' element= {<AddProduct/>} />
-              {/* <Route path={`/productdetails/${itemD.id}`} element={<AddProduct singleItem={itemD} />} /> */}
+              <Route path='/addproducts' element={<AddProduct />} />
+              {/* here we not redirect with id query i simply manage this by product slice reducer  */}
+              <Route path={`/productdetail`} element={<CardsDetails />} />
                   </Routes>
                   <Footer />
               </div >

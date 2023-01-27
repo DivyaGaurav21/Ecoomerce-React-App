@@ -4,12 +4,31 @@ import Table from 'react-bootstrap/Table'
 //----------import Rating--------------------------------//
 import Ratings from './Ratings'
 
+import { useDispatch } from 'react-redux';
+
+import { useSelector } from 'react-redux';
+
+import { addCart } from '../store/cartSlice';
+import SimilarItem from './footer/SimilarItem';
+
 // -------get cart item from store---------------------//
-// import { useSelector } from 'react-redux';
+
 
 const CardsDetails = (props) => {
+    const dispatch = useDispatch();
+
+
     // -------now subscribe the data(added to cart data) --------------//
-    // const items = useSelector((state) => state.cart)
+    const viewItm = useSelector((state) => state.products.itemToDisplay)
+
+
+
+    // --------Function for Add to Cart-------------------//
+    const addCartHandle = (element) => {
+        // ======Add this element in redux store======//
+        dispatch(addCart(element));
+    }
+    
 
   return (
       <div className='container mt-3 '>
@@ -17,7 +36,7 @@ const CardsDetails = (props) => {
           <section className='container mt-2'>
               <div className="itemsdetails">
                   <div className="items__img">
-                      <img src="https://b.zmtcdn.com/data/pictures/chains/1/113401/59f29399060caefcc575d59dc9402ce8_o2_featured_v2.jpg" alt="" />
+                      <img src={viewItm.imgdata} alt="" />
                   </div>
 
                   {/* table for item description  */}
@@ -25,20 +44,28 @@ const CardsDetails = (props) => {
                       <Table>
                           <tr>
                               <td style={{color:"#fff"}}>
-                                  <p> <strong>Restaurant</strong>  : Jugaadi Adda </p>
-                                  <p> <strong>Price</strong>  : ₹ 325</p>
-                                  <p> <strong>Dishes</strong>  : North Indian, Biryani, Mughlai</p>
+                                  <p> <strong>Restaurant</strong>  : {viewItm.rname} </p>
+                                  <p><small>{viewItm.name }</small></p>
+                                  <p> <strong>Price</strong>  : ₹ {viewItm.price }</p>
+                                  <p> <strong>Address</strong>  : {viewItm.address}</p>
                               </td>
                               <td style={{ color: "#fff" }}>
-                                  <p><strong>Rating :</strong> <Ratings value="3"/></p>
-                                  <p><strong>Order Review :</strong> <span >1175+ order placed from here recently</span></p>
-                                  <p><strong>Remove :</strong> <span ><i className='fas fa-trash' style={{ color: "red", fontSize: 20, cursor: "pointer" }}></i>	</span></p>
+                                  <p><strong>Rating :</strong> <Ratings value={viewItm.rating} /></p>
+                                  <p><strong>Order Review :</strong> <span >{viewItm.somedata}</span></p>
+                                  <p>☟</p>
+                                  <button className='carddetailbtn bg-secondary' onClick={() => addCartHandle(viewItm)}>Add To Cart</button>
                               </td>
                           </tr>
                       </Table>
                   </div>
               </div>
           </section>
+
+          <div className='container mt-3 w-75'>
+              <p className='text-secondary'>{viewItm.overviwe}</p>
+              <h5 className='text-danger text-center mb-3'>Similar Receipies   ☟</h5>
+              <SimilarItem/>
+          </div>
     </div>
   )
 }

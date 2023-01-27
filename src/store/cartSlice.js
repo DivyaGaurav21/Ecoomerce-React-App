@@ -4,7 +4,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import { toast } from 'react-toastify';
 
 const INIT_STATE = {
-    cartItems: [],
+    cartItems: localStorage.getItem("cartItems")
+        ? JSON.parse(localStorage.getItem("cartItems"))
+        : [],
     cartTotalQuantity: 0,
     cartTotalAmount : 0
 };
@@ -30,6 +32,7 @@ const cartSlice = createSlice({
                     position: "bottom-right"
                 })
             }
+            localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
         },
         //===========reducer fn for remove item from cart======================// 
         removeFromCart: (state, action) => {
@@ -38,6 +41,7 @@ const cartSlice = createSlice({
             })
             const filterCartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id)
             state.cartItems = filterCartItems;
+            localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
         },
 
         //===========reducer fn for derease item in cart====================//
@@ -63,6 +67,7 @@ const cartSlice = createSlice({
                     position: "bottom-left",
                 });
             }
+            localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
         },
         //================reducer Fn for items Total price=============//
         getTotals:(state, action) => {
@@ -77,6 +82,7 @@ const cartSlice = createSlice({
         //================reducer Fn for clear whole cart=============//
         clearCart : (state, action) => {
             state.cartItems = [];
+            localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
             toast.error("Your Cart is Clear now !", {
                 position: "bottom-left",
             });
