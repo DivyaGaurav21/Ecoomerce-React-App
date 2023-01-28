@@ -1,62 +1,53 @@
 import { useEffect } from 'react';
 import Header from './components/Header';
 import './App.css'
-// -----Importing react Tostifier for showing Notification-------//
-import {ToastContainer} from "react-toastify"
-// --------------Import Toast Container css ---------------------//
+
+// --------Importing react Tostifier for showing Notification--------//
+import { ToastContainer } from "react-toastify"
+
+// ----------------Import Toast Container css -----------------------//
 import "react-toastify/dist/ReactToastify.css";
-//----------------Importing BootStrap Css Module---------------//
+
+//--------------------Importing BootStrap Css Module-----------------//
 import 'bootstrap/dist/css/bootstrap.min.css';
-//--- --------Importing Carausel Image-------------------//
+
+//--- --------Importing Carausel MealDemo Component-------------------//
 import MealDemo from './components/carousel/Carausal';
-// ---------Importing routes , route ----------------//
+
+// ------------------Importing routes , route ------------------------//
 import { Routes, Route } from 'react-router-dom'
-// ----------import CardsDetails , Card , Footer--------------//
-// import CardsDetails from './components/CardsDetails';
+// --------------import CardsDetails , Card , Footer------------------//
+
+//================Add Cards , footer , AddProduct Component===========//
 import Cards from './components/Cards'
 import Footer from './components/footer/Footer';
 import AddProduct from './components/addProduct/AddProduct';
+import CardsDetails from './components/CardsDetails';
 
-// import { useSelector } from 'react-redux';
 
-// // -----------Imprting useSelector & dispatch fn from react-redux---------//
+ // -----------Imprting useSelector & dispatch fn from react-redux---------//
 import { useDispatch } from 'react-redux';
 
 
 
-// import { useParams } from 'react-router-dom';
+//***********/ my api(fake json -server)---> https://my-json-server.typicode.com/DivyaGaurav21/restaurentJSON/db***********//
+ //**********/ my Cardsdata url ----> "https://my-json-server.typicode.com/DivyaGaurav21/restaurentJSON/Cardsdata"*********//
 
-// my api---https://my-json-server.typicode.com/DivyaGaurav21/restaurentJSON/db
 
+// =================Importing fetchCardsData from Product Slice===============//
 import { fetchCardsData } from './store/productSlice';
-import CardsDetails from './components/CardsDetails';
 
 
-
-
+// ************** Main App Component*******************//
 function App() {
+
     const dispatch = useDispatch();
-
-
-
+// ___________the main purpse of useEffect here that i rerender _____________//
+// _____our Component after fetching data(able to create redux store)_______//
     useEffect(() => {
         dispatch(fetchCardsData());
     }, [dispatch]);
-
-
-    // const items = useSelector((state) => state.products.itemToDisplay)
-    // console.log(items.rname)
-    // let { id } = useParams();
-    // console.log(id)
-    // let requiredData = items.find(item => item.id === id);
-    // console.log(requiredData)
-
-  
-
-    // const url = "https://my-json-server.typicode.com/DivyaGaurav21/restaurentJSON/Cardsdata";
-
-
-
+    
 
   return (
           < div className = "App" >

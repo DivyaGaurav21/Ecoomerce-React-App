@@ -1,9 +1,13 @@
 import React from 'react'
 import './Footer.css'
+
+// _____________Importing react icons___________//
 import { BsFacebook } from 'react-icons/bs'
 import { GrInstagram } from 'react-icons/gr'
 import { AiFillTwitterCircle } from 'react-icons/ai'
 
+
+// ___________________Main Footer Component___________//
 const Footer = () => {
     return (
         <footer>

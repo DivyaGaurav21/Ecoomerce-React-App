@@ -1,8 +1,12 @@
 import Carousel from 'react-bootstrap/Carousel';
+// ____________Importing assets Image______________//
 import IMG1 from '../../assets/meals.jpg'
 import IMG2 from '../../assets/meals2.jpg'
 import IMG3 from '../../assets/meals3.jpg'
 
+
+
+// ********_____________React Boot Strap Component____________******//
 function MealDemo() {
     return (
         <Carousel>

@@ -6,18 +6,18 @@ import { fetchCardsData } from '../store/productSlice';
 
 const SortByPrice = () => {
 
-    // // satte to set if sort is true or not 
+    //------------ satte to set if sort is true or not -----------------//
     const [flag, setFlag] = useState(false);
    
     const dispatch = useDispatch();
 
-    // // function to sort products according to price 
+   //--------- function to sort products according to price ------------//
     function handleSort() {
         dispatch(sortOblect())
         setFlag(true);
     }
 
-    // remove sorting 
+    //---------------------remove sorting ---------------------------//
     function cancelSort() {
         dispatch(fetchCardsData())
         setFlag(false);

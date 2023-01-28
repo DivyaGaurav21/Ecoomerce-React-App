@@ -4,16 +4,15 @@ import Table from 'react-bootstrap/Table'
 //----------import Rating--------------------------------//
 import Ratings from './Ratings'
 
+//___importing useDispatch and useSelector from react-redux___//
 import { useDispatch } from 'react-redux';
-
 import { useSelector } from 'react-redux';
-
+//_______import addCart Fn from Cart Slice_________________//
 import { addCart } from '../store/cartSlice';
+// ___________similar Item Component_____________________//
 import SimilarItem from './footer/SimilarItem';
 
-// -------get cart item from store---------------------//
-
-
+// +++++++++++++++++ Main CardsDetails Comp +++++++++++++++++++//
 const CardsDetails = (props) => {
     const dispatch = useDispatch();
 
@@ -41,6 +40,7 @@ const CardsDetails = (props) => {
 
                   {/* table for item description  */}
                   <div className="details">
+                      {/* react-bootstap table  */}
                       <Table>
                           <tr>
                               <td style={{color:"#fff"}}>

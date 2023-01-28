@@ -22,7 +22,7 @@ import { removeFromCart, decreaseCart, addCart, clearCart, getTotals } from '../
 
 
 
-
+// =============React-BootStrap Modal===================//
 function MyVerticallyCenteredModal(props) {
 
     // -------now subscribe the data(added to cart data) --------------//
@@ -59,6 +59,7 @@ function MyVerticallyCenteredModal(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
+            {/* mdal header  */}
             <Modal.Header closeButton className='bg-danger text-light'>
                 <Modal.Title id="contained-modal-title-vcenter" className='ms-auto'>
                   <span>Number of Items : </span>
@@ -67,8 +68,10 @@ function MyVerticallyCenteredModal(props) {
                      }
                 </Modal.Title>
             </Modal.Header>
+            {/* modal body  */}
             <Modal.Body>
-                 {
+                {
+                    // we simply map over array object and find propert value of each object //
                     cart.cartItems.map(element => {
                         return (
                         <div key={element.id}>
@@ -79,27 +82,28 @@ function MyVerticallyCenteredModal(props) {
                                          </div>
 
                                          {/* table for item description  */}
-                                       <div className="details">
+                                        <div className="details">
+                                            {/* react-bootstrap table component  */}
                                           <Table>
                                              <tr>
-                                                     <td style={{ color: "#fff" }}>
-                                                         <p> <strong>Restaurant</strong>  : {element.rname} </p>
-                                                         <p> <strong>Price</strong>  : ₹ {element.price}</p>
-                                                        <p> <strong>Total</strong>  :₹  {element.price * element.qnty} </p>
-                                                        <div className='mt-2 d-flex justify-content-between align-items-center' style={{ width: 90, height:30, borderRadius: 40, cursor: "pointer", background: "#ddd", color: "#111" }}>
-                                                             <span style={{ fontSize: 24 }} onClick = {() => decreaseCartItemHandle(element)}>−</span>             
-                                                            <span style={{ fontSize: 24 , color:'red' }}>{element.qnty}</span>
-                                                             <span style={{ fontSize: 24 }} onClick = {()=> increaseCartItemHandle(element)}>+</span>
-                                                         </div>
-                                                     </td>
-                                                     <td style={{ color: "#fff" }}>
-                                                        <p><strong>Rating :</strong> <Ratings value="3" /></p>
-                                                        <small style={{color:"grey"}}>{ element.name}</small>
-                                                         <p> <strong>Dishes</strong>  : {element.address}</p>
-                                                        <p onClick={() => removeCartHandler(element)}><strong>Remove :</strong> <span ><i className='fas fa-trash' style={{ color: "red", fontSize: 20, cursor: "pointer" }}></i>	</span></p>
-                                                     </td>
-                                                 </tr>
-                                             </Table>
+                                               <td style={{ color: "#fff" }}>
+                                                 <p> <strong>Restaurant</strong>  : {element.rname} </p>
+                                                 <p> <strong>Price</strong>  : ₹ {element.price}</p>
+                                                <p> <strong>Total</strong>  :₹  {element.price * element.qnty} </p>
+                                                <div className='mt-2 d-flex justify-content-between align-items-center' style={{ width: 90, height:30, borderRadius: 40, cursor: "pointer", background: "#ddd", color: "#111" }}>
+                                                    <span style={{ fontSize: 24 }} onClick = {() => decreaseCartItemHandle(element)}>−</span>             
+                                                    <span style={{ fontSize: 24 , color:'red' }}>{element.qnty}</span>
+                                                    <span style={{ fontSize: 24 }} onClick = {()=> increaseCartItemHandle(element)}>+</span>
+                                                </div>
+                                                 </td>
+                                                  <td style={{ color: "#fff" }}>
+                                                     <p><strong>Rating :</strong> <Ratings value="3" /></p>
+                                                     <small style={{color:"grey"}}>{ element.name}</small>
+                                                      <p> <strong>Dishes</strong>  : {element.address}</p>
+                                                     <p onClick={() => removeCartHandler(element)}><strong>Remove :</strong> <span ><i className='fas fa-trash' style={{ color: "red", fontSize: 20, cursor: "pointer" }}></i>	</span></p>
+                                                 </td>
+                                              </tr>
+                                          </Table>
                                          </div>
                                      </div>
                                  </section>
@@ -108,6 +112,7 @@ function MyVerticallyCenteredModal(props) {
                      })
                  }
             </Modal.Body>
+            {/* modal footer  */}
             <Modal.Footer className='d-flex justify-content-between'>
                 <Button className="btn modal-btn" onClick={() => clearCartItemHandle()}>Clear Cart</Button>
                 <div style={{color:'red' , fontSize:20}}><strong>Total payable Amount</strong> : ₹ {cart.cartTotalAmount}</div>

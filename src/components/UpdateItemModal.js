@@ -53,7 +53,7 @@ function UpdateItemModal(props) {
                         <small>price : ₹</small>
                         <input type="text" value={price} onChange={(e)=>setPrice(e.target.value)} />
                         <small>rating</small>
-                        <input type="number" max={'5'} min={'0'} step={'0.5'} value={rating} onChange={(e)=>setRating(e.target.value) } />
+                        <input type="text" value={rating} onChange={(e)=>setRating(e.target.value) } />
                 </div>
                 </Modal.Body>
                 <Modal.Footer className='d-flex justify-content-between'>

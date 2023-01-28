@@ -1,8 +1,15 @@
+// ------------------------Import createSlice from redux toolkit---------------------------------//
 import { createSlice } from "@reduxjs/toolkit";
+// __________________Import AXIOS(third party library) for request on Api _______________________//
 import axios from 'axios';
 
+// ______________________Import toast for operation notification on UI__________________________//
 import { toast } from 'react-toastify';
 
+
+//Intial State for after fating data of api simply put that data in data array or(local storage)//
+//______________when you click any item for see details then i kept that object _________________//
+// ____________in itemToDisplay variable & (Local Storage) or manage loading and error___________//
 const initial_State = {
     data: localStorage.getItem("productItems")
         ? JSON.parse(localStorage.getItem("productItems"))
@@ -14,6 +21,9 @@ const initial_State = {
     error: null
 };
 
+
+// ------------this function called in app component by useEffect after function call-----------//
+// _____________it fetch data using axios and send data in redux toolkit store__________________//
 export const fetchCardsData = () => async (dispatch) => {
     // console.log("function called")
     try {
@@ -24,6 +34,8 @@ export const fetchCardsData = () => async (dispatch) => {
         dispatch(fetchCardsDataFailed(error.message));
     }
 };
+
+// ___________________________________Post Request________________________________________//
 export const addCardData = (cardData) => async (dispatch) => {
     try {
         dispatch(setLoading());
@@ -34,6 +46,7 @@ export const addCardData = (cardData) => async (dispatch) => {
     }
 };
 
+// ___________________________________Put Request_______________________________________//
 export const updateCardData = (cardData) => async (dispatch) => {
     try {
         dispatch(setLoading());
@@ -44,6 +57,7 @@ export const updateCardData = (cardData) => async (dispatch) => {
     }
 };
 
+// ___________________________________Delete Request_______________________________________//
 export const deleteCardData = (id) => async (dispatch) => {
     try {
         dispatch(setLoading());
@@ -55,18 +69,16 @@ export const deleteCardData = (id) => async (dispatch) => {
 };
 
 
-
-
-
-
+// +++++++++++++++++++++++PRODUCT SLICE for creating action on every Reducer+++++++++++++++++++++//
+// ________________we cant manage here asynk Thunk fn and creats extra reducer__________________//
 const productsSlice = createSlice({
     name: "products",
     initialState: initial_State,
-
     reducers: {
         setLoading: (state) => {
             state.loading = true;
         },
+        // __________fetching action payload and put object in state data array___________//
         fetchCardsDataSuccess: (state, action) => {
             state.data = action.payload;
             // console.log(action.payload)
@@ -78,6 +90,7 @@ const productsSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        // _________when you create new object simply push that payload in state data______//
         addCardDataSuccess: (state, action) => {
             state.data.push(action.payload);
             state.loading = false;
@@ -91,6 +104,7 @@ const productsSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+         // _________when you update object simply update state data by payload element______//
         updateCardDataSuccess: (state, action) => {
             const index = state.data.findIndex(card => card.id === action.payload.id);
             state.data[index] = action.payload;
@@ -105,6 +119,7 @@ const productsSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        // _____________action and state management for delete single card__________//
         deleteCardDataSuccess: (state, action) => {
             state.data = state.data.filter(card => card.id !== action.payload);
             state.loading = false;
@@ -118,21 +133,23 @@ const productsSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        // ____________function for sorting object by price_____________________//
         sortOblect: (state, action) => {
             let sortedData = state.data.sort((a, b) => a.price - b.price);
             state.data = sortedData;
             localStorage.setItem("productItems", JSON.stringify(state.data));
         },
+        // ___________when you click any image then able to see product details ________//
         productView: (state, action) => {
             state.itemToDisplay = action.payload;
             // Set the JSON string in local storage
             localStorage.setItem("productView", JSON.stringify(action.payload));
         }
-
-      
     }
 })
 
+
+//_________exporting all the action___________________________// 
 export const { setLoading, fetchCardsDataSuccess, fetchCardsDataFailed,
     addCardDataSuccess, addCardDataFailed,
     updateCardDataSuccess, updateCardDataFailed,
@@ -143,4 +160,4 @@ export const { setLoading, fetchCardsDataSuccess, fetchCardsDataFailed,
 
 export default productsSlice.reducer;
 
-// =============================================================//
+// ==============*==================*=================*============//

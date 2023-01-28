@@ -1,3 +1,4 @@
+/* -------------add product some custom css ---------------- */
 .addproduct-form{
    width: 50%;
    display: flex;
@@ -25,6 +26,7 @@
     color: #fff;
     margin: auto;
 }
+/* ---------basic media query------------- */
 @media screen and (max-width:600px) {
     .addproduct-form{
         width: 96%;

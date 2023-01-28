@@ -1,8 +1,9 @@
-// --------------Import createSlice from redux toolkit--------------------//
+// ------------------------Import createSlice from redux toolkit----------------------------------//
 import { createSlice } from '@reduxjs/toolkit'
-//---------------Import toast for notification----------------------------//
+//-----------------------------Import toast for notification-------------------------------------//
 import { toast } from 'react-toastify';
 
+//_____Initial State(cartItems--> after fetching api we want to kept data in local storage)______//
 const INIT_STATE = {
     cartItems: localStorage.getItem("cartItems")
         ? JSON.parse(localStorage.getItem("cartItems"))
@@ -11,8 +12,7 @@ const INIT_STATE = {
     cartTotalAmount : 0
 };
 
-
-
+// +++++++++++++++++++++++CART SLICE for creating action on every Reducer+++++++++++++++++++++//
 const cartSlice = createSlice({
     name: 'cart',
     initialState: INIT_STATE,
@@ -20,6 +20,7 @@ const cartSlice = createSlice({
         //===========reducer function for add item in cart===============//
         addCart: (state, action) => {
             const itemIndex = state.cartItems.findIndex(item => item.id === action.payload.id);
+        // _________if you twice click add to cart thent simply item is increased in cart_________//
             if (itemIndex >= 0) {
                 state.cartItems[itemIndex].qnty += 1;
                 toast.info("Item increase in cart!", {
@@ -39,6 +40,7 @@ const cartSlice = createSlice({
             toast.error('Successfully removed from cart!', {
                 position: "top-right"
             })
+            // ___________simply i removed clicked cart item from cart array_________//
             const filterCartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id)
             state.cartItems = filterCartItems;
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
@@ -56,13 +58,13 @@ const cartSlice = createSlice({
                 toast.info("Decreased product quantity", {
                     position: "bottom-left",
                 });
-            } else if (state.cartItems[itemIndex].qnty === 1) {
+            }
+            // _________if item quantity in cart is 1 , we simply filter that item from CartItems array______//
+            else if (state.cartItems[itemIndex].qnty === 1) {
                 const removeCartItem = state.cartItems.filter(
                     (item) => item.id !== action.payload.id
                 );
-
                 state.cartItems = removeCartItem;
-
                 toast.error("Product removed from cart !", {
                     position: "bottom-left",
                 });
@@ -94,7 +96,9 @@ const cartSlice = createSlice({
     }
 });
 
-// Action creators are generated for each case reducer function
+//______________Action creators are generated for each case reducer function_________________________//
 export const { addCart, removeFromCart, decreaseCart , getTotals , clearCart} = cartSlice.actions;
 
+
+// _________we want all reducer in other file____________________//
 export default cartSlice.reducer;

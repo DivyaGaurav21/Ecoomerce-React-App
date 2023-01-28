@@ -18,10 +18,11 @@ const Header = () => {
 
     // -------now subscribe the data(added to cart data) --------------//
     const items = useSelector((state) => state.cart.cartItems);
-
+    // __________________when did modal shown__________________//
     const [modalShow, setModalShow] = useState(false);
   return (
       <>
+          {/* react-bootstrap navbar */}
           <Navbar style={{ background: '#f44336' }} variant="dark" className='fixed-top'>
               <Container>
                   <Nav.Link to='/' className='text-light mx-4 fw-bold fs-3 fst-italic'>Meal Hub</Nav.Link>
@@ -30,6 +31,7 @@ const Header = () => {
                       &nbsp; &nbsp; &nbsp;
                       <Nav.Link href='/addproducts' className='text-light fw-bolder lnk'>Add Recipes</Nav.Link>
                   </Nav>
+                  {/* react-bootsrap badge */}
                   <Badge badgeContent={items.length} color="primary">
                       <i className="fa-solid fa-cart-shopping text-light" style={{ fontSize: 25, cursor: "pointer" }} onClick={() => setModalShow(true)}></i>
                       <MyVerticallyCenteredModal
